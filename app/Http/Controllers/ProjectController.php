@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Transformers\UserTransformer;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class ProjectController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,32 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user= app('Dingo\Api\Auth\Auth')->user();
-        return $this->response->item($user, new UserTransformer())->setStatusCode(200);
+
     }
-
-
-    public function validateUser(){
-        $user= app('Dingo\Api\Auth\Auth')->user();
-
-        if(!$user){
-            $responseArray = [
-              'message' => 'Not Authorized. Please login again',
-                'status' => false,
-            ];
-
-            return $this->response->array($responseArray)->setStatusCode(403);
-        }
-        else{
-            $responseArray = [
-                'message' => 'User is authorized',
-                'status' => true,
-            ];
-
-            return $this->response->array($responseArray)->setStatusCode(200);
-        }
-    }
-
 
     /**
      * Show the form for creating a new resource.

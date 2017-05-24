@@ -37,7 +37,8 @@ $api->version('v1',function($api) {
 
 $api->version('v1', ['middleware' => 'api.auth'], function ($api) {
 
-$api->get('user/validate', 'App\Http\Controllers\UserController@validateUser');
+    $api->get('user/validate', 'App\Http\Controllers\UserController@validateUser');
+    $api->get('user', 'App\Http\Controllers\UserController@index');
     //    $api->get('users','App\Http\Controllers\Auth\RegisterController@index');
 //    $api->get('user','App\Http\Controllers\Auth\RegisterController@show');
 //    $api->get('token','App\Http\Controllers\Auth\RegisterController@getUserToken');
