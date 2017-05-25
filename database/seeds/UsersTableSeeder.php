@@ -9,9 +9,14 @@ class UsersTableSeeder extends Seeder
 {
     public function run()
     {
+//        \App\User::create([
+//            'email' => 'abc@example.com',
+//            'name' => 'abc',
+//            'password' => Hash::make('qwerty'),
+//        ]);
         \App\User::create([
-            'email' => 'abc@example.com',
-            'name' => 'abc',
+            'email' => 'xyz@example.com',
+            'name' => 'xyz',
             'password' => Hash::make('qwerty'),
         ]);
     }

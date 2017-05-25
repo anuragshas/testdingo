@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 $api->version('v1',function($api) {
     $api->post('oauth/access_token', function() {
-        return Response::json(Authorizer::issueAccessToken());
+        return Response::json(Authorizer::issueAccessToken())->setStatusCode(200);
     });
 });
 

@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Transformers\UserTransformer;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
-{
+class UserController extends Controller {
     /**
      * Display a listing of the resource.
      *
@@ -14,26 +13,27 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user= app('Dingo\Api\Auth\Auth')->user();
+        $user = app('Dingo\Api\Auth\Auth')->user();
+
         return $this->response->item($user, new UserTransformer())->setStatusCode(200);
     }
 
 
-    public function validateUser(){
-        $user= app('Dingo\Api\Auth\Auth')->user();
+    public function validateUser()
+    {
+        $user = app('Dingo\Api\Auth\Auth')->user();
 
-        if(!$user){
+        if (!$user) {
             $responseArray = [
-              'message' => 'Not Authorized. Please login again',
-                'status' => false,
+                'message' => 'Not Authorized. Please login again',
+                'status'  => false,
             ];
 
             return $this->response->array($responseArray)->setStatusCode(403);
-        }
-        else{
+        } else {
             $responseArray = [
                 'message' => 'User is authorized',
-                'status' => true,
+                'status'  => true,
             ];
 
             return $this->response->array($responseArray)->setStatusCode(200);
@@ -54,7 +54,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -65,7 +65,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -76,7 +76,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -87,8 +87,8 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -99,7 +99,7 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
